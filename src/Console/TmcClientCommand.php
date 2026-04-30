@@ -38,9 +38,10 @@ class TmcClientCommand extends Command
 
         $worker = new Worker();
 
-        $worker->name = 'tmc_client-'.$connection;
-        Worker::$pidFile = storage_path('tmc_client-'.$connection.'.pid');
-        Worker::$logFile = storage_path('logs/tmc_client-'.$connection.'.log');
+        $processId = getmypid();
+        $worker->name = 'tmc_client-'.$connection.'-'.$processId;
+        Worker::$pidFile = storage_path('tmc_client-'.$connection.'-'.$processId.'.pid');
+        Worker::$logFile = storage_path('logs/tmc_client-'.$connection.'-'.$processId.'.log');
 
         $worker->onWorkerStart = [new TmcClient($connection), 'start'];
 

@@ -12,6 +12,17 @@ class TmcClientServiceProvider extends ServiceProvider
     /**
      * @return void
      */
+    public function boot()
+    {
+        $this->publishes([
+            dirname(__DIR__).'/config/tmc.php' => config_path('tmc.php'), ],
+            'tmc'
+        );
+    }
+
+    /**
+     * @return void
+     */
     public function register()
     {
         $this->registerCommand();
