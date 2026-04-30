@@ -33,7 +33,7 @@ class TmcUtil
         if ($content instanceof Throwable) {
             $logContent = $content->__toString();
         } elseif (is_array($content) || is_object($content)) {
-            $logContent = json_encode($content, JSON_UNESCAPED_UNICODE);
+            $logContent = json_encode($content, JSON_UNESCAPED_UNICODE | JSON_INVALID_UTF8_SUBSTITUTE);
         } elseif (is_null($content) || is_bool($content)) {
             $logContent = var_export($content, true);
         } else {

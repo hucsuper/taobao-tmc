@@ -2,6 +2,7 @@
 
 namespace Hucsuper\TaobaoTmc;
 
+use Exception;
 use Hucsuper\TaobaoTmc\Constants\MessageFields;
 use Hucsuper\TaobaoTmc\Constants\MessageKind;
 use Hucsuper\TaobaoTmc\Constants\MessageType;
@@ -57,6 +58,7 @@ class TmcClient
 
     /**
      * @return $this
+     * @throws Exception
      */
     public function start()
     {
@@ -70,6 +72,7 @@ class TmcClient
 
     /**
      * @return AsyncTcpConnection
+     * @throws Exception
      */
     protected function createConnection()
     {
@@ -124,9 +127,9 @@ class TmcClient
         }
 
         // 第三步：把请求主体拼接在参数后面
-        if (!empty($body)) {
+        /*if (!empty($body)) {
             $query .= $body;
-        }
+        }*/
 
         // 第四步：使用MD5/HMAC加密
         if ($signMethod === 'HMAC') {
@@ -158,12 +161,12 @@ class TmcClient
     {
         $query = [
             'app_key' => $this->config['app_key'],
-            'group_name' => 'default',
+            'group_name' => $this->config['group'] ?? 'default',
             'timestamp' => TmcUtil::getMillisecondTimestamp()
         ];
         $query['sign'] = $this->generateSign($query, $this->config['app_secret']);
         $query['sdk_version'] = 'SDK';
-        $query['intranet_ip'] = '127.0.0.1';
+        $query['intranet_ip'] = gethostbyname(gethostname());
         $msg = new Message();
         $msg->setMessageType(MessageType::CONNECT);
         $msg->setContent($query);
@@ -340,11 +343,16 @@ class TmcClient
      */
     protected function getHandler()
     {
-        $handler = $this->config['handler'];
-        if (!class_exists($handler)) {
+        $handler = $this->config['handler'] ?? null;
+        if (!$handler || !class_exists($handler)) {
             return null;
         }
-        return new $handler();
+        $instance = new $handler();
+        if (!$instance instanceof MessageHandlerInterface) {
+            $this->println("Handler {$handler} does not implement MessageHandlerInterface");
+            return null;
+        }
+        return $instance;
     }
 
     /**
