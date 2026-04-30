@@ -56,9 +56,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/7 18:16
      * @return $this
      */
     public function start()
@@ -72,9 +69,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/22 17:16
      * @return AsyncTcpConnection
      */
     protected function createConnection()
@@ -98,9 +92,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/7 18:29
      * @param AsyncTcpConnection $connection
      * @return $this
      */
@@ -111,9 +102,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/22 17:10
      * @param array $params
      * @param string $secret
      * @param string $signMethod
@@ -155,9 +143,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/7 17:54
      * @param AsyncTcpConnection $connection
      * @return void
      */
@@ -167,9 +152,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/22 17:26
      * @return void
      */
     protected function login()
@@ -189,9 +171,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/22 17:24
      * @param Message $message
      * @return bool|null
      */
@@ -201,9 +180,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/7 17:54
      * @param AsyncTcpConnection $connection
      * @param $message
      * @return void
@@ -218,9 +194,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/7 17:54
      * @param AsyncTcpConnection $connection
      * @param $message
      * @return void
@@ -264,9 +237,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/22 18:17
      * @param Message $msg
      * @return void
      */
@@ -277,9 +247,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/22 18:17
      * @param int $id
      * @return Message
      */
@@ -296,9 +263,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/24 10:07
      * @param int $id
      * @param $errorMsg
      * @return Message
@@ -316,9 +280,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/22 18:17
      * @return void
      */
     protected function pullRequest()
@@ -345,9 +306,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/22 17:36
      * @param string $data
      * @return Message
      */
@@ -357,9 +315,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/7 17:54
      * @param AsyncTcpConnection $connection
      * @param $code
      * @param $message
@@ -371,9 +326,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/7 17:54
      * @param AsyncTcpConnection $connection
      * @return void
      */
@@ -384,9 +336,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/24 14:57
      * @return MessageHandlerInterface|null
      */
     protected function getHandler()
@@ -399,9 +348,6 @@ class TmcClient
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/22 17:34
      * @param $message
      * @param bool $fileLog
      * @return void

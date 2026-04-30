@@ -23,8 +23,6 @@ class TmcClientCommand extends Command
     protected $description = '开启TMC客户端';
 
     /**
-     * Author：胡超
-     * Date: 2024/6/24 14:36
      * @return void
      */
     public function handle()

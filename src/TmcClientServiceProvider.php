@@ -10,9 +10,6 @@ class TmcClientServiceProvider extends ServiceProvider
 {
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/24 16:13
      * @return void
      */
     public function register()
@@ -21,9 +18,6 @@ class TmcClientServiceProvider extends ServiceProvider
     }
 
     /**
-     * Author：胡超
-     * 
-     * Date: 2024/6/24 14:35
      * @return void
      */
     protected function registerCommand()
