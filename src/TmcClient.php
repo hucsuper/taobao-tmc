@@ -337,7 +337,6 @@ class TmcClient
                 if (!$this->sendMessage($msg)) {
                     $this->println('pull_request send message fail');
                     $this->connection->close();
-                    $this->connection->reconnect();
                 }
             } catch (Throwable $throwable) {
                 $this->println('pull_request error:'.$throwable->getMessage());
@@ -381,6 +380,7 @@ class TmcClient
     public function onClose(AsyncTcpConnection $connection)
     {
         $this->println(__FUNCTION__);
+        $connection->reconnect(3);
     }
 
     /**
